@@ -1,0 +1,3 @@
+FROM node:18.16.0
+WORKDIR /project
+EXPOSE 3000
