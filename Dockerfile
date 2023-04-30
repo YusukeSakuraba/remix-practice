@@ -1,3 +1,3 @@
 FROM node:18.16.0
-WORKDIR /project
+WORKDIR /remix-practice
 EXPOSE 3000
