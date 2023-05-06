@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 
 export const loader = async () => {
@@ -21,6 +21,7 @@ export default function Posts() {
           </li>
         ))}
       </ul>
+      <Outlet />
     </div>
   );
 }
