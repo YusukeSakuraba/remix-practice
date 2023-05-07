@@ -1,5 +1,5 @@
 import { ActionArgs, json, redirect } from "@remix-run/node";
-import { Outlet, useLoaderData } from "@remix-run/react";
+import { Link, Outlet, useLoaderData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 
 export const loader = async () => {
@@ -30,6 +30,7 @@ export default function Posts() {
       <ul>
         {data.posts.map((post) => (
           <li key={post.id}>
+            {post.id}
             {post.title}
             {post.content}
             <form method="post">
@@ -38,6 +39,7 @@ export default function Posts() {
                 Delete
               </button>
             </form>
+            <Link to={post.id}>詳細</Link>
           </li>
         ))}
       </ul>
