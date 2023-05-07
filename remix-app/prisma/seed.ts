@@ -2,15 +2,17 @@ import { PrismaClient } from "@prisma/client";
 const db = new PrismaClient();
 
 async function seed() {
-  await db.user.create({
+  const user1 = await db.user.create({
     data: {
       username: "user1",
-      passwordHash: "$2b$10$Z3Z",
+      passwordHash:
+        "$2b$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u",
     },
   });
   await Promise.all(
     postList().map((post) => {
-      return db.post.create({ data: post });
+      const data = { userId: user1.id, ...post };
+      return db.post.create({ data });
     })
   );
 }
