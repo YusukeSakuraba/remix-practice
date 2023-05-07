@@ -2,6 +2,12 @@ import { PrismaClient } from "@prisma/client";
 const db = new PrismaClient();
 
 async function seed() {
+  await db.user.create({
+    data: {
+      username: "user1",
+      passwordHash: "$2b$10$Z3Z",
+    },
+  });
   await Promise.all(
     postList().map((post) => {
       return db.post.create({ data: post });
